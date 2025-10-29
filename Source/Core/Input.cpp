@@ -4,10 +4,13 @@
 
 Input* Input::s_Instance = nullptr;
 
-Input::Input()
+void Input::Init()
 {
-	NVIZ_ASSERT(!s_Instance, "Input Already created");
-	s_Instance = this;
+    if (!s_Instance)
+    {
+        s_Instance = new Input();
+		NVIZ_INFO("Input system initialized.");
+    }
 }
 
 bool Input::IsKeyPressed(const KeyCode key)

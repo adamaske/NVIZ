@@ -1,7 +1,9 @@
 #pragma once
 #include <QMainWindow.h>
 #include "Core/Base.h"
-#include "Core/ViewportWidget.h"
+
+class ViewportWidget;
+class CameraSettingsWidget;
 
 struct ApplicationCommandLineArgs
 {
@@ -45,6 +47,6 @@ private:
 	ApplicationSpecification m_Specification;
 
 	ViewportWidget* m_ViewportWidget = nullptr;
-
+	CameraSettingsWidget* m_CameraSettingsWidget = nullptr;
 	// Setup Methods
 };

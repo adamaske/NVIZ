@@ -2,6 +2,8 @@
 *.d
 .vs/
 out/
+Utilities/py/venv/*
+Vendor/*
 
 # Compiled Object files
 *.slo

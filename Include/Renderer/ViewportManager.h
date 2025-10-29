@@ -19,10 +19,6 @@ public:
 	ViewportManager();
 	~ViewportManager();
 
-	static void Init() {
-
-	};
-
 	// For example, we register a viewport, called "MainViewport", it has ViewID = 1
 	// Then maybe we register "Probe Editor", it has ViewID = 2
 	// Then "Atlas Editor", it has ViewID = 3

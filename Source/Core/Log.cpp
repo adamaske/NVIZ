@@ -17,4 +17,7 @@ void Log::Init() // TODO : Link a shader to the QT6 log panel
 	spdlog::register_logger(s_CoreLogger);
 	s_CoreLogger->set_level(spdlog::level::trace);
 	s_CoreLogger->flush_on(spdlog::level::trace);
+
+
+	NVIZ_INFO("Log system initialized.");
 }

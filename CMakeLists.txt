@@ -16,6 +16,7 @@ set(FORMS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Forms")
 file(GLOB_RECURSE INCS "${INCLUDE_DIR}/*.h")
 file(GLOB_RECURSE SRCS "${SOURCE_DIR}/*.cpp")
 file(GLOB_RECURSE FORMS "${FORMS_DIR}/*.ui")
+qt_wrap_ui(UI_HEADERS ${FORMS})
 
 # --- External Dependencies ---
 set(HDF5_ROOT "C:/Program Files/HDF_Group/HDF5/1.14.6")
@@ -24,14 +25,23 @@ find_package(HDF5 REQUIRED)
 add_subdirectory(${VENDOR_DIR}/spdlog)
 
 # --- TARGET ---
-add_executable(${PROJECT_NAME} ${SRCS} ${INCS} ${VENDOR_DIR}/glad/src/glad.cpp 
-    ${FORMS})	
+add_executable(${PROJECT_NAME} 
+                ${SRCS} 
+                ${INCS} 
+                ${VENDOR_DIR}/glad/src/glad.cpp 
+                ${UI_HEADERS}   
+)	
 
+set_property(TARGET ${PROJECT_NAME} 
+             PROPERTY AUTOUIC_SEARCH_PATHS 
+             ${FORMS_DIR}
+)
 
 target_precompile_headers(${PROJECT_NAME} PRIVATE ${INCLUDE_DIR}/pch.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC
     ${INCLUDE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR} 
     ${VENDOR_DIR}/glad/include
     ${VENDOR_DIR}/spdlog/include
     ${VENDOR_DIR}/glm

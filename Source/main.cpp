@@ -1,5 +1,6 @@
 #include <QApplication>
 #include "Core/Log.h"
+#include "Core/Input.h"
 #include "Core/Application.h"
 
 int main(int argc, char* argv[])
@@ -7,6 +8,7 @@ int main(int argc, char* argv[])
     QApplication app(argc, argv);
 
     Log::Init();
+    Input::Init();
 
     ApplicationSpecification spec;
     spec.Name = "NIRS VIZ";

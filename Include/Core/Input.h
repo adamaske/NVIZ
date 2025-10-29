@@ -22,14 +22,14 @@ enum CursorMode {
 class Input : public QObject
 {
     Q_OBJECT
+
 public:
-    Input();
-    
-    // Polling Functions (now read from the cache)
+
+    static void Init();
+
     static bool IsKeyPressed(const KeyCode key);
     static bool IsMouseButtonPressed (const MouseCode button);
     static glm::vec2 GetMousePosition ();
-
 
     static Input* Instance() { return s_Instance; };
 public slots:
